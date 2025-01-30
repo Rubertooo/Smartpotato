@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp0cfccmjabuo"
-path="res://.godot/imported/Smartpotato.apple-touch-icon.png-5a66aa124b0827e56e8bd2143762d733.ctex"
+uid="uid://c5qy5ggrg6gg6"
+path="res://.godot/imported/index.icon.png-5147dc9a6e76db7ac987318ad5b5d13e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Smartpotato.apple-touch-icon.png"
-dest_files=["res://.godot/imported/Smartpotato.apple-touch-icon.png-5a66aa124b0827e56e8bd2143762d733.ctex"]
+source_file="res://game/index.icon.png"
+dest_files=["res://.godot/imported/index.icon.png-5147dc9a6e76db7ac987318ad5b5d13e.ctex"]
 
 [params]
 

@@ -1,21 +1,74 @@
-[gd_scene load_steps=3 format=3 uid="uid://207x0h3u3kxr"]
+[gd_scene load_steps=8 format=3 uid="uid://207x0h3u3kxr"]
 
 [ext_resource type="PackedScene" uid="uid://dape5a0df3yqs" path="res://scenes/sprite.tscn" id="1_1ecpj"]
+[ext_resource type="PackedScene" uid="uid://bdkgaqir0uop2" path="res://scenes/nife.tscn" id="2_l56gw"]
+[ext_resource type="PackedScene" uid="uid://duw0d22qfdd12" path="res://scenes/Airfrier.tscn" id="3_jx4wu"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wllnp"]
-distance = -273.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mcp57"]
+radius = 104.0
+height = 258.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0rik3"]
+radius = 32.8272
+height = 332.135
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tvk00"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_i40ev"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_1ecpj")]
 z_index = 1
-position = Vector2(-23, -283)
+position = Vector2(-966, -507)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(1, 399)
+[node name="Area2D" type="Area2D" parent="Player"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_wllnp")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("CapsuleShape2D_mcp57")
+
+[node name="Knife" parent="." instance=ExtResource("2_l56gw")]
+position = Vector2(453, -383)
+
+[node name="KnifeArea" type="Area2D" parent="Knife"]
+
+[node name="KnifeCollision" type="CollisionShape2D" parent="Knife/KnifeArea"]
+position = Vector2(-25, -119)
+rotation = -0.0583351
+shape = SubResource("CapsuleShape2D_0rik3")
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_jx4wu")]
+position = Vector2(21, 846)
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+position = Vector2(-84, -461)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_tvk00")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(-1943, -6)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("WorldBoundaryShape2D_i40ev")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(1916, 5)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+shape = SubResource("WorldBoundaryShape2D_i40ev")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(0, -1077)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("WorldBoundaryShape2D_i40ev")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.3, 0.3)
+
+[connection signal="body_entered" from="Knife/KnifeArea" to="Player" method="_on_knife_area_body_entered"]
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="Player" method="_on_area_2d_body_entered"]

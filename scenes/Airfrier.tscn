@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://duw0d22qfdd12"]
+
+[ext_resource type="Texture2D" uid="uid://by2mabs8jcfci" path="res://assets/5y61_en4u_210702-removebg-preview.png" id="1_j5fv4"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_j5fv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

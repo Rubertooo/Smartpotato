@@ -1,17 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://dape5a0df3yqs"]
+[gd_scene load_steps=6 format=3 uid="uid://dape5a0df3yqs"]
 
 [ext_resource type="Script" path="res://scripts/sprite.gd" id="1_bj3ag"]
-[ext_resource type="Texture2D" uid="uid://c1m5sqq0ldxxp" path="res://assets/image-removebg-preview (9).png" id="2_5pery"]
+[ext_resource type="Texture2D" uid="uid://bdam1jv8w2gw7" path="res://assets/potato1.1-removebg-preview.png" id="2_3whie"]
+[ext_resource type="Texture2D" uid="uid://bm8m8yylo4ngr" path="res://assets/image-removebg-preview (6).png" id="2_c721d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oj5b2"]
 radius = 134.17
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_q1fb3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3whie")
+}],
+"loop": false,
+"name": &"Peeled1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c721d")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_bj3ag")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_5pery")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 1.25)
 shape = SubResource("CircleShape2D_oj5b2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q1fb3")
+animation = &"Peeled1"
+autoplay = "default"
